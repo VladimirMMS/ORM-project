@@ -2,15 +2,18 @@
   "name": "creating_model",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "app",
   "scripts": {
-    "server":"nodemon src/app.js" 
+    "server": "nodemon src/app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.9.0"
   }
 }
