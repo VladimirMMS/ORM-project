@@ -1,22 +1,18 @@
-const Car = require('../../db/models/carModel')
+const Vehicle = require('../../db/models/vehicleModel')
  
-function getAllCar(req, res) {
+async function getAllCar(req, res) {
 
-    const cars = Car.findAll()
+    const cars = await Vehicle.findAll()
 
-    console.log(cars)
-    res.json({
-        data:cars
-    })    
+    res.json({data:cars})    
     
 }
 
-function createCar(req, res) {
+async function createCar(req, res) {
     
     const {mark, driverId, model} = req.body
-
     try {
-        let newCar = Car.create({
+        let newCar = await Vehicle.create({
             mark,
             driverId,
             model

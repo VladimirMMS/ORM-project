@@ -1,11 +1,11 @@
 const Sequelize = require('sequelize')
 const sequelize = require('../database')
-const Driver = require('./driverModel')
 
- const Car = sequelize.define('Car', {
+ const Vehicle = sequelize.define('Vehicle', {
      id: {
          type: Sequelize.INTEGER,
          autoIncrement:true,
+         allowNull:false,
          primaryKey:true
      },
 
@@ -13,9 +13,6 @@ const Driver = require('./driverModel')
          type: Sequelize.STRING,
      },
      
-     driverId: {
-        type: Sequelize.INTEGER
-     },
      model: {
          type:Sequelize.STRING
      },
@@ -25,9 +22,7 @@ const Driver = require('./driverModel')
  })
  
  
-Car.hasOne(Driver, {foreignKey: 'driverId', sourceKey:'id'})
-Driver.belongsTo(Car, {foreignKey:'driverId', sourceKey:'id'})
 
-module.exports = Car;
+module.exports = Vehicle;
 
 
