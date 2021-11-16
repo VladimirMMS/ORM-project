@@ -1,24 +1,25 @@
-const Sequelize = require('sequelize')
-
+const {Sequelize} = require('sequelize')
 
 
 const sequelize = new Sequelize(
-    'postgres',
+    'carCompany',
     'postgres',
     '20012020',
     {
         host:'localhost',
         dialect:'postgres',
-        pool: {
-            max:5,
-            min:0,
-            require:30000,
-            idle:10000
-
-            
-        },
-        logging:false
     }
 )
+
+
+sequelize
+.sync()
+.then((result) => {
+    console.log("")
+})
+.catch((err) => {
+    console.log(err)
+})
+
 
 module.exports = sequelize; 

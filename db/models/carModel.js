@@ -1,19 +1,33 @@
-const {Sequelize, DataTypes, Model} = require('sequelize')
+const Sequelize = require('sequelize')
 const sequelize = require('../database')
-
+const Driver = require('./driverModel')
 
  const Car = sequelize.define('Car', {
      id: {
-         type: DataTypes.INTEGER,
+         type: Sequelize.INTEGER,
+         autoIncrement:true,
          primaryKey:true
      },
-     
+
      mark: {
-         type: DataTypes.STRING,
+         type: Sequelize.STRING,
+     },
+     
+     driverId: {
+        type: Sequelize.INTEGER
      },
      model: {
-         type:DataTypes.STRING
-     }, 
-     freezeTableName: true
+         type:Sequelize.STRING
+     },
+ 
+ }, {
+    freezeTableName: true
  })
+ 
+ 
+Car.hasOne(Driver, {foreignKey: 'driverId', sourceKey:'id'})
+Driver.belongsTo(Car, {foreignKey:'driverId', sourceKey:'id'})
+
+module.exports = Car;
+
 
