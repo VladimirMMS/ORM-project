@@ -5,6 +5,21 @@ async function getAllDriver(req, res) {
     res.json({data:driver})    
 }
 
+async function getVehicleById(req, res) {
+    
+    let idDriver = parseInt(req.params.id)
+ 
+     const newDriver = await Driver.findOne({
+         where: {
+             id: idDriver
+         }
+     })
+     res.json({
+         data:newDriver
+     })  
+ }
+
+
 async function createDriver(req, res) {
     
     const {name, rank, licenseType} = req.body

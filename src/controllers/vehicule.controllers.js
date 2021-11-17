@@ -1,5 +1,6 @@
 const Vehicle = require('../../db/models/vehicleModel')
  
+
 async function getAllCar(req, res) {
 
     const cars = await Vehicle.findAll()
@@ -8,13 +9,27 @@ async function getAllCar(req, res) {
     
 }
 
+async function getVehicleById(req, res) {
+    
+   let idCar = parseInt(req.params.id)
+
+    const vehicle = await Vehicle.findOne({
+        where: {
+            id: idCar
+        }
+    })
+    res.json({
+        data:vehicle
+    })  
+}
+
+
 async function createCar(req, res) {
     
-    const {mark, driverId, model} = req.body
+    const {mark, model} = req.body
     try {
         let newCar = await Vehicle.create({
             mark,
-            driverId,
             model
         })
 
@@ -29,5 +44,6 @@ async function createCar(req, res) {
 
 module.exports = {
     getAllCar,
-    createCar
+    createCar,
+    getVehicleById
 } 
