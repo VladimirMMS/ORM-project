@@ -13,8 +13,11 @@ const Driver = sequelize.define('Driver', {
          type: Sequelize.STRING,
      },
      
-     destiny: {
+     rank: {
          type:Sequelize.STRING
+     },
+     licenseType: {
+         type: Sequelize.STRING
      }
  }, {
      freezeTableName:true,

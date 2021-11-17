@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan')
-const routerCar = require('./route/car')
+const routerCar = require('./route/vehicle')
+const routerDriver = require('./route/driver')
 const app = express()
 const sequelize = require('../db/database')
 const Vehicle = require('../db/models/vehicleModel')
@@ -14,7 +15,6 @@ app.use(express.json())
 
 Driver.hasMany(Vehicle)
 
-// Driver.belongsTo(Car, {foreignKey:'driverId', sourceKey:'id'})
 
 sequelize
 .sync({force:true})
@@ -25,8 +25,8 @@ sequelize
     console.log(err)
 })
 
-app.use('/api', routerCar)
-
+app.use('/api/vehicle', routerCar)
+app.use('/api/driver', routerDriver)
 
 
 module.exports =app;

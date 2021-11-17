@@ -19,16 +19,13 @@ async function createCar(req, res) {
         })
 
         if(newCar) {
-            res.status(202).json({message:"Car assigned successfully"})
+            res.status(202).json({message:"Vehicle was registred successfully"})
         }
         
     } catch (error) {
         res.status(504).json({message:"Something was wrong with the server"})
     }
-    
-
 }
-
 
 module.exports = {
     getAllCar,
