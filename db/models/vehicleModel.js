@@ -16,6 +16,10 @@ const sequelize = require('../database')
      model: {
          type:Sequelize.STRING
      },
+     driverId: {
+         allowNull:false,
+         type: Sequelize.UUID
+     }
  
  }, {
     freezeTableName: true

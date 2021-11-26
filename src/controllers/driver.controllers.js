@@ -5,7 +5,7 @@ async function getAllDriver(req, res) {
     res.json({data:driver})    
 }
 
-async function getVehicleById(req, res) {
+async function getDriverById(req, res) {
     
     let idDriver = parseInt(req.params.id)
  
@@ -41,5 +41,6 @@ async function createDriver(req, res) {
 
 module.exports = {
     getAllDriver,
-    createDriver
+    createDriver,
+    getDriverById
 }
